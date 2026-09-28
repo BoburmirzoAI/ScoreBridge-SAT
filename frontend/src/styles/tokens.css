@@ -1,0 +1,173 @@
+/*
+ * Scorebridge design tokens — ported verbatim from
+ * design/source/tokens-and-fonts.reference.css (light + dark).
+ *
+ * Canonical names are semantic: --brand (oxblood, was "violet"),
+ * --reward (brass, was "gold"). The old --violet / --gold names are kept
+ * as aliases so SVG art ported 1:1 from component.reference.js (which uses
+ * var(--gold) etc. as literal strings) keeps rendering correctly.
+ *
+ * Tailwind (tailwind.config.js) maps every color utility to these vars, so
+ * light/dark swap automatically via [data-theme] on <html>.
+ */
+
+:root,
+:root[data-theme='light'] {
+  --bg: #f6f4ef;
+  --surface: #ffffff;
+  --surface-2: #ece8df;
+  --sidebar: #16181d;
+  --sidebar-2: #212329;
+  --text: #16181d;
+  --dim: #6b6862;
+  --faint: #9a968c;
+  --heading: #16181d;
+
+  --brand: #7a1f2b;
+  --brand-soft: #efe4e2;
+  --reward: #b08d57;
+  --reward-soft: #f1e9db;
+
+  --border: #e4e0d6;
+  --border-2: #ece8df;
+
+  --on-side: #b9b6ae;
+  --on-side-dim: #7c7a73;
+
+  --shadow: none;
+  --shadow-lg: 0 8px 30px rgba(22, 24, 29, 0.1);
+
+  /* status: none / in-progress / overdue / done / late */
+  --st-none: #8a8780;
+  --st-prog: #3f5f8a;
+  --st-over: #a33a2e;
+  --st-done: #3d7a5a;
+  --st-late: #a87a2a;
+  --st-none-bg: #ece8df;
+  --st-prog-bg: #e8ecf2;
+  --st-over-bg: #f3e7e4;
+  --st-done-bg: #e7efe9;
+  --st-late-bg: #f2ebdd;
+
+  /* legacy aliases for 1:1-ported SVG art */
+  --violet: var(--brand);
+  --violet-soft: var(--brand-soft);
+  --gold: var(--reward);
+  --gold-soft: var(--reward-soft);
+
+  /* logo mark — theme-adaptive, tuned to read on the dark sidebar */
+  --logo-body: #3e3f8f; /* indigo (light theme) */
+  --logo-star: #f5b301; /* Lantern Gold */
+}
+
+:root[data-theme='dark'] {
+  --bg: #121317;
+  --surface: #1b1d22;
+  --surface-2: #23262c;
+  --sidebar: #0e0f13;
+  --sidebar-2: #191b20;
+  --text: #e9e7e1;
+  --dim: #9a968c;
+  --faint: #6b6862;
+  --heading: #f3f1eb;
+
+  --brand: #b0555f;
+  --brand-soft: #2a1f21;
+  --reward: #c29a63;
+  --reward-soft: #2a2419;
+
+  --border: #2c2f36;
+  --border-2: #23262c;
+
+  --on-side: #b9b6ae;
+  --on-side-dim: #6e6c66;
+
+  --shadow: none;
+  --shadow-lg: 0 10px 34px rgba(0, 0, 0, 0.5);
+
+  --st-none: #8a8780;
+  --st-prog: #6e90c4;
+  --st-over: #c4675c;
+  --st-done: #5fa07e;
+  --st-late: #c29a5a;
+  --st-none-bg: #23262c;
+  --st-prog-bg: #1c2430;
+  --st-over-bg: #2e2220;
+  --st-done-bg: #1c2823;
+  --st-late-bg: #2a2519;
+
+  /* logo mark — lighter in dark mode for contrast on the darker sidebar */
+  --logo-body: #d7d9ee;
+  --logo-star: #f5b301;
+}
+
+/* ---- keyframes (real, non-neutered versions for the live app) ---- */
+@keyframes sbFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes sbPop {
+  0% {
+    transform: scale(0.94);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes sbShimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+@keyframes sbConfetti {
+  0% {
+    transform: translateY(-10px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(160px) rotate(220deg);
+    opacity: 0;
+  }
+}
+@keyframes sbFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+@keyframes sbSpinIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) rotate(-12deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes sbGlow {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
